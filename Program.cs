@@ -80,6 +80,10 @@ builder.Services.AddAuthorization();
 // ── 4. Controllers ────────────────────────────────════════════════════════════
 builder.Services.AddControllers();
 
+
+// Memoey Cache----------------
+builder.Services.AddMemoryCache();
+
 // ── 5. Native .NET 10 OpenAPI Document Generation ────────────────────────────
 builder.Services.AddOpenApi();
 
