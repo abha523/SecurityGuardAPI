@@ -6,8 +6,16 @@
 /home/abhay/SecurityGuardAPI/bin/Debug/net10.0/SecurityGuardAPI.runtimeconfig.json
 /home/abhay/SecurityGuardAPI/bin/Debug/net10.0/SecurityGuardAPI.dll
 /home/abhay/SecurityGuardAPI/bin/Debug/net10.0/SecurityGuardAPI.pdb
+/home/abhay/SecurityGuardAPI/bin/Debug/net10.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /home/abhay/SecurityGuardAPI/bin/Debug/net10.0/Microsoft.AspNetCore.OpenApi.dll
+/home/abhay/SecurityGuardAPI/bin/Debug/net10.0/Microsoft.IdentityModel.Abstractions.dll
+/home/abhay/SecurityGuardAPI/bin/Debug/net10.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/abhay/SecurityGuardAPI/bin/Debug/net10.0/Microsoft.IdentityModel.Logging.dll
+/home/abhay/SecurityGuardAPI/bin/Debug/net10.0/Microsoft.IdentityModel.Protocols.dll
+/home/abhay/SecurityGuardAPI/bin/Debug/net10.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/abhay/SecurityGuardAPI/bin/Debug/net10.0/Microsoft.IdentityModel.Tokens.dll
 /home/abhay/SecurityGuardAPI/bin/Debug/net10.0/Microsoft.OpenApi.dll
+/home/abhay/SecurityGuardAPI/bin/Debug/net10.0/System.IdentityModel.Tokens.Jwt.dll
 /home/abhay/SecurityGuardAPI/obj/Debug/net10.0/SecurityGuardAPI.csproj.AssemblyReference.cache
 /home/abhay/SecurityGuardAPI/obj/Debug/net10.0/rpswa.dswa.cache.json
 /home/abhay/SecurityGuardAPI/obj/Debug/net10.0/SecurityGuardAPI.GeneratedMSBuildEditorConfig.editorconfig
