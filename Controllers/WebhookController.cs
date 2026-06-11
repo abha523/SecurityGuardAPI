@@ -2,6 +2,7 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using SecurityGuardAPI.Filters;
+using SecurityGuardAPI.Models; // <-- CHANGE 1: Imported Models namespace
 
 namespace SecurityGuardAPI.Controllers
 {
@@ -17,10 +18,10 @@ namespace SecurityGuardAPI.Controllers
         }
 
         [HttpPost("receive")]
-        [ShopifyAuthorize] // 1. Authenticate first
+        [ShopifyAuthorize] 
         public IActionResult Receive(
             [FromHeader(Name = "X-Shopify-Webhook-Id")] string? webhookId,
-            [FromBody] object payload) // 2. Accept the actual payload data
+            [FromBody] ShopifyOrder order) // <-- CHANGE 2: Swapped object for ShopifyOrder
         {
             // Guard clause if the header is completely missing
             if (string.IsNullOrEmpty(webhookId))
@@ -40,8 +41,15 @@ namespace SecurityGuardAPI.Controllers
                 AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(24)
             });
 
+            // <-- CHANGE 3: Live printing of parsed data
+            Console.WriteLine($"\n[LIVE WEBHOOK] Order #{order.OrderNumber} received! Total: {order.TotalPrice} {order.Currency}");
+            foreach (var item in order.LineItems)
+            {
+                Console.WriteLine($" -> Item: {item.Title} (Qty: {item.Quantity})");
+            }
+
             // 5. Proceed with core webhook business logic safely here
-            return Ok(new { message = "Unique webhook processed successfully." });
+            return Ok(new { message = $"Order {order.OrderNumber} integrated cleanly." });
         }
     }
 }
