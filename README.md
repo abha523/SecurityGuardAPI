@@ -22,15 +22,7 @@ SecurityGuardWorkspace/
 │   └── SecurityGuardAPI.Tests.csproj
 └── README.md                       # System Manifest & Operator Manual
 
-```text
-
-
-
-
-
-
-
-## Security Hardening Principles
+🛡️ Security Hardening Principles
 
 This gateway is explicitly engineered against common automated exploit vectors:
 
@@ -40,7 +32,7 @@ This gateway is explicitly engineered against common automated exploit vectors:
 
     Insulated Runtime Middleware: The execution pipeline rejects unsigned, mutated, or missing bearer authorizations directly at the protocol layer before routing hits application-level code.
 
-## Installation & Local Deployment
+🚀 Installation & Local Deployment
 System Requirements
 
     .NET 10.0 SDK or newer
@@ -81,11 +73,7 @@ To hit the system, an integration client must pass their provisioned ID and secr
 
     Headers: Content-Type: application/json
 
- 
- 
- 
- 
-## JSON Payload Matrix:
+    JSON Payload Matrix:
 
 JSON
 
@@ -95,19 +83,15 @@ JSON
   "grantType": "client_credentials"
 }
 
-
-
-## Verification Execution Example (curl):
+Verification Execution Example (curl):
 Bash
 
 curl -X POST http://localhost:5000/api/auth/token \
      -H "Content-Type: application/json" \
      -d '{"clientId":"zapier_integration_node","clientSecret":"super_secure_vault_pass_123","grantType":"client_credentials"}'
 
-
-     
-     Success Response Pipeline (200 OK):
-## JSON
+Success Response Pipeline (200 OK):
+JSON
 
 {
   "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -115,9 +99,7 @@ curl -X POST http://localhost:5000/api/auth/token \
   "expiresIn": 3600
 }
 
-
-
-## Phase 2: Utilizing the Secure Data Gateway
+Phase 2: Utilizing the Secure Data Gateway
 
 Once you harvest an active token string, assign it to your payload headers to safely transition past the gateway boundary.
 
@@ -129,8 +111,6 @@ Once you harvest an active token string, assign it to your payload headers to sa
 
     JSON Payload Matrix: Any structured business event or transactional package array.
 
-
-    
 Verification Execution Example (curl):
 Bash
 
@@ -139,31 +119,19 @@ curl -X POST http://localhost:5000/api/zapier/receive \
      -H "Content-Type: application/json" \
      -d '{"event":"lead_created","email":"prospect@domain.com","status":"active"}'
 
-
-     
-     
-     Expected Ingestion Handshake (200 OK):
+Expected Ingestion Handshake (200 OK):
 JSON
 
 {
   "message": "Data integrated safely under JWT shield."
 }
 
-
-
-
-
-
-
-
-
 🚦 Gateway Rejection Matrix
 
 If incoming operational parameters step outside strict cryptographic criteria, the application forces defensive handling states.
-Condition	                       HTTP Status	          System Response Payload Reason
-Missing/Mismatched grantType	  400 Bad Request	      {"error":"unsupported_grant_type","error_description":"..."}
-Corrupt or Unknown Credentials	  401 Unauthorized	     {"error":"invalid_client","error_description":"..."}
-Missing or
-Blank Authorization Header	      401 Unauthorized	      Handled at transport boundary before executing routing modules.
-Altered/Fake/Malformed JWT	      401 Unauthorized	      Handled via framework level validation middleware.
- 
+Condition	HTTP Status	System Response Payload Reason
+Missing/Mismatched grantType	400 Bad Request	{"error":"unsupported_grant_type","error_description":"..."}
+Corrupt or Unknown Credentials	401 Unauthorized	{"error":"invalid_client","error_description":"..."}
+Missing or Blank Authorization Header	401 Unauthorized	Handled at transport boundary before executing routing modules.
+Altered/Fake/Malformed JWT	401 Unauthorized	Handled via framework level validation middleware.
+
