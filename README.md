@@ -22,6 +22,7 @@ SecurityGuardWorkspace/
 │   └── SecurityGuardAPI.Tests.csproj
 └── README.md                       # System Manifest & Operator Manual
 
+```text
 
 
 
@@ -29,8 +30,7 @@ SecurityGuardWorkspace/
 
 
 
-
-🛡️ Security Hardening Principles
+## Security Hardening Principles
 
 This gateway is explicitly engineered against common automated exploit vectors:
 
@@ -40,7 +40,7 @@ This gateway is explicitly engineered against common automated exploit vectors:
 
     Insulated Runtime Middleware: The execution pipeline rejects unsigned, mutated, or missing bearer authorizations directly at the protocol layer before routing hits application-level code.
 
-🚀 Installation & Local Deployment
+## Installation & Local Deployment
 System Requirements
 
     .NET 10.0 SDK or newer
@@ -85,7 +85,7 @@ To hit the system, an integration client must pass their provisioned ID and secr
  
  
  
- JSON Payload Matrix:
+## JSON Payload Matrix:
 
 JSON
 
@@ -97,7 +97,7 @@ JSON
 
 
 
-Verification Execution Example (curl):
+## Verification Execution Example (curl):
 Bash
 
 curl -X POST http://localhost:5000/api/auth/token \
@@ -107,7 +107,7 @@ curl -X POST http://localhost:5000/api/auth/token \
 
      
      Success Response Pipeline (200 OK):
-JSON
+## JSON
 
 {
   "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -117,7 +117,7 @@ JSON
 
 
 
-Phase 2: Utilizing the Secure Data Gateway
+## Phase 2: Utilizing the Secure Data Gateway
 
 Once you harvest an active token string, assign it to your payload headers to safely transition past the gateway boundary.
 
@@ -131,7 +131,7 @@ Once you harvest an active token string, assign it to your payload headers to sa
 
 
     
-    Verification Execution Example (curl):
+Verification Execution Example (curl):
 Bash
 
 curl -X POST http://localhost:5000/api/zapier/receive \
